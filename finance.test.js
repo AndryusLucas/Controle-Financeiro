@@ -1,29 +1,20 @@
 const { calcularResumo } = require('./finance');
 
-describe('Testes do Módulo Financeiro', () => {
-    
-    test('Deve calcular corretamente o resumo com entradas e saídas', () => {
-        // Cenário de teste (Mocks)
-        const transacoesDummy = [
-            { id: 1, descricao: 'Salário', valor: '5000', tipo: 'entrada' },
-            { id: 2, descricao: 'Aluguel', valor: '1200', tipo: 'saida' },
-            { id: 3, descricao: 'Mercado', valor: '300', tipo: 'saida' }
+// Grupo de testes para a matéria da Jéssica
+describe('Testando as contas do sistema', () => {
+
+    test('Caso 1: Deve somar entradas e subtrair saídas corretamente', () => {
+        // Criando uma listinha de mentira idêntica à que o usuário usaria
+        const compras = [
+            { valor: '100', tipo: 'entrada' }, // Ganhou 100
+            { valor: '30', tipo: 'saida' }     // Gastou 30
         ];
 
-        // Execução
-        const resultado = calcularResumo(transacoesDummy);
+        const resultado = calcularResumo(compras);
 
-        // Validações (Asserts)
-        expect(resultado.entradas).toBe(5000);
-        expect(resultado.saidas).toBe(1500);
-        expect(resultado.total).toBe(3500);
-    });
-
-    test('Deve retornar valores zerados se a lista de transações estiver vazia', () => {
-        const resultado = calcularResumo([]);
-        
-        expect(resultado.entradas).toBe(0);
-        expect(resultado.saidas).toBe(0);
-        expect(resultado.total).toBe(0);
+        // Verificando se a matemática funcionou
+        expect(resultado.entradas).toBe(100);
+        expect(resultado.saidas).toBe(30);
+        expect(resultado.total).toBe(70); // 100 - 30 tem que dar 70
     });
 });

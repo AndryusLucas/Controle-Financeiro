@@ -1,25 +1,29 @@
-// Lógica de cálculo pura (isolada do HTML e do localStorage)
-function calcularResumo(transacoes) {
+// Uma função simples que recebe a lista e faz uma conta de somar e subtrair
+function calcularResumo(listaDeTransacoes) {
     let entradas = 0;
-    let saídas = 0;
+    let saidas = 0;
 
-    transacoes.forEach(transacao => {
-        const valor = parseFloat(transacao.valor);
+    // Passa por cada item da lista
+    for (let i = 0; i < listaDeTransacoes.length; i++) {
+        let transacao = listaDeTransacoes[i];
+        let valor = Number(transacao.valor); // Transforma texto em número de forma simples
+
         if (transacao.tipo === 'entrada') {
-            entradas += valor;
+            entradas = entradas + valor;
         } else if (transacao.tipo === 'saida') {
-            saídas += valor;
+            saidas = saidas + valor;
         }
-    });
+    }
 
-    const total = entradas - saídas;
+    let saldoTotal = entradas - saidas;
 
+    // Devolve o resultado final formatado
     return {
         entradas: entradas,
-        saidas: saídas,
-        total: total
+        saidas: saidas,
+        total: saldoTotal
     };
 }
 
-// Exporta a função para que o arquivo de teste consiga importar
+// Linha obrigatória para o teste conseguir ler essa função
 module.exports = { calcularResumo };
