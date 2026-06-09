@@ -4,8 +4,9 @@
   "description": "<h1 align=\"center\">   💵 Controle Financeiro </h1>",
   "main": "script.js",
   "scripts": {
-    "test": "jest"
-  },
+  "test": "jest",
+  "test:watch": "jest --watchAll"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AndryusLucas/Controle-Financeiro.git"
